@@ -13,11 +13,13 @@ func vhostFromHostname(host string) (string, error) {
 	pieces := strings.Split(host, ".")
 
 	// If there are no dots, or only one dot, there's no vhost
-	if len(pieces) == 1 || len(pieces) == 2 {
+	if len(pieces) == 1 || len(pieces) == 2 || len(pieces) == 3 && pieces[0] == "www" {
 		return "", errors.New("No vhost")
 	}
 
-	if (strings.HasPrefix(host, "0.0.0.0") || strings.HasPrefix(host, "127.0.0.1") || strings.HasSuffix(host, "fly.dev")) {
+	if strings.HasPrefix(host, "0.0.0.0") ||
+	 strings.HasPrefix(host, "127.0.0.1") ||
+	 strings.HasSuffix(host, "fly.dev") {
 		return "", errors.New("No vhost")
 	}
 	// This totally fails for IP-based hostnames

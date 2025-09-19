@@ -1,3 +1,5 @@
+[![Build and push to ghcr.io](https://github.com/phred/smolboi/actions/workflows/ghcr-publish.yml/badge.svg)](https://github.com/phred/smolboi/actions/workflows/ghcr-publish.yml)
+
 # 📼 smolboi 📼
 
 A mixtape 📼 of the greatest hits from [goStatic](https://github.com/PierreZ/goStatic) with a little special sauce all my my own.

@@ -55,7 +55,7 @@ func (w *NotFoundResponseWriter) WriteHeader(status int) {
 		log.Debug().Msgf("Sending custom 404 response")
 
 		w.ResponseWriter.Write([]byte(w.errorBody))
-		w.silenceWrites = true
+		w.silenceWrites = false
 		return
 	}
 

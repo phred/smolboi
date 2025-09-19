@@ -16,6 +16,10 @@ func vhostFromHostname(host string) (string, error) {
 	if len(pieces) == 1 || len(pieces) == 2 {
 		return "", errors.New("No vhost")
 	}
+
+	if (strings.HasPrefix(host, "0.0.0.0") || strings.HasPrefix(host, "127.0.0.1") || strings.HasSuffix(host, "fly.dev")) {
+		return "", errors.New("No vhost")
+	}
 	// This totally fails for IP-based hostnames
 
 	// Otherwise, return the leftmost component

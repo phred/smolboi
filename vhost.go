@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"strings"
 	"path"
-	"os"
 
 	"github.com/rs/zerolog/log"
 )
@@ -83,8 +82,8 @@ type VHost struct {
 func detectVhosts(fileSystem http.FileSystem) map[string]VHost {
 	vhostRoot, err := fileSystem.Open(*vhostPrefix)
 	if err != nil {
-		log.Fatal().Err(err).Msgf("Cannot read vhost directory")
-		os.Exit(1)
+		log.Debug().Msgf("Cannot read vhost directory %v", err)
+		return make(map[string]VHost)
 	}
 	vhostDirs, err := vhostRoot.Readdir(512)
 	vhosts := make(map[string]VHost)
